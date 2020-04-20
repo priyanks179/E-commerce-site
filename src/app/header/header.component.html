@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="color: peachpuff;"><b><i>FixedPrice.com</i></b></a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#">Category</a></li>
+        <li><a routerLink="/products/add">Add</a></li>
+        <li><a routerLink="/products/update">Update</a></li>
+        <li><a routerLink="/products/delete">Delete</a></li>
+        <li><a routerLink="/products/search">Search</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!isLoggedIn$"><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li *ngIf="!isLoggedIn$"><a routerLink="/signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="isLoggedIn$"><a (click)="onLogOut()" style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
