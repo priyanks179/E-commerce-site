@@ -1,20 +1,46 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#" style="color: peachpuff;"><b><i>FixedPrice.com</i></b></a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="#">Category</a></li>
-        <li><a routerLink="/products/add">Add</a></li>
-        <li><a routerLink="/products/update">Update</a></li>
-        <li><a routerLink="/products/delete">Delete</a></li>
-        <li><a routerLink="/products/search">Search</a></li>
-
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!isLoggedIn$"><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li *ngIf="!isLoggedIn$"><a routerLink="/signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li *ngIf="isLoggedIn$"><a (click)="onLogOut()" style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" routerLink="/">FixedPrice.com</a>
+		<ul class="navbar-nav">
+			<li
+				class="nav-item"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: true }"
+			>
+				<a routerLink="/" class="nav-link">Category</a>
+			</li>
+			<li class="nav-item" routerLinkActive="active">
+				<a routerLink="/products/add" class="nav-link">Add</a>
+			</li>
+			<!-- <li class="nav-item">
+				<a routerLink="/products/update" class="nav-link">Update</a>
+			</li>
+			<li class="nav-item">
+				<a routerLink="/products/delete" class="nav-link">Delete</a>
+			</li> -->
+			<li class="nav-item" routerLinkActive="active">
+				<a routerLink="/products/search" class="nav-link">Search</a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li *ngIf="!isLoggedIn$" class="navbar-item mr-2">
+				<a routerLink="/signup" class="btn btn-success"
+					><i class="fas fa-user-plus"></i> Sign Up</a
+				>
+			</li>
+			<li *ngIf="!isLoggedIn$" class="navbar-item">
+				<a routerLink="/signin" class="btn btn-primary"
+					><i class="fas fa-sign-in-alt"></i> Login</a
+				>
+			</li>
+			<li *ngIf="isLoggedIn$" class="navbar-item">
+				<a
+					(click)="onLogOut()"
+					style="cursor: pointer;"
+					class="btn btn-danger"
+					><i class="fas fa-sign-out-alt"></i> Logout</a
+				>
+			</li>
+		</ul>
+	</div>
+</nav>
