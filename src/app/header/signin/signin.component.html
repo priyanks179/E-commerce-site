@@ -7,9 +7,13 @@
       <label for="username">Username:</label>
       <input type="text" class="form-control" id="username" formControlName="username">
     </div>
+    <span *ngIf="!signinForm.get('username').valid && signinForm.get('username').touched"
+      class="help-block">Please enter a valid username!</span>
     <div class="form-group">
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" formControlName="password">
     </div>
+    <span *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched"
+      class="help-block">Please enter a valid password!</span>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

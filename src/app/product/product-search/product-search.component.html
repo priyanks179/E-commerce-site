@@ -29,51 +29,32 @@
                                  height="100"
                                 width="100">  
                             <hr> 
-                            <div class="row">
-                                <div class="col-md-7">
                                     <p >{{products.category}}</p>
                                     <p >{{products.descp}}</p>
-                                </div>
-                                <div class="col-md-4">
+
+
                                     <a class="btn btn-primary" 
                                         routerLink="/products/update/{{products.pId}}" 
                                         >Update</a>
-                                    <br>
-                                    <br>
                                     <a class="btn btn-danger"
-                                        routerLink="/products/delete/{{products.pId}}">Delete</a>
+                                        routerLink="/products/delete/{{products.pId}}"
+                                        >Delete</a>
+                                    <a class="btn btn-danger"
+                                        routerLink="/products/delete/{{products.pId}}"
+                                        >Add To Cart</a>
+                                    <a class="btn btn-danger"
+                                        routerLink="/products/delete/{{products.pId}}"
+                                        >Buy Now</a>
                                 </div>
+                                <div class="panel-footer" >Rs.{{products.price}}</div>
                             </div>
                             
                                     
                                 
                         
                     </div>
-                    <div class="panel-footer" >Rs.{{products.price}}</div>
+                    
                 </div>
             </div>
         <!-- </div> -->
         </div>
-    </div> 
-    
-
-
- <!-- <div role="tabpanel" class="tab-pane active container-fluid" id="home">
-    <div class="row">
-        <div class="col-md-4"><div class="panel panel-default">
-        <div class="panel-body">
-            Basic panel example
-        </div>
-    </div></div>
-        <div class="col-md-4"><div class="panel panel-default">
-        <div class="panel-body">
-            Basic panel example
-        </div>
-    </div></div>
-        <div class="col-md-4"><div class="panel panel-default">
-        <div class="panel-body">
-            Basic panel example
-        </div>
-    </div></div>
-    </div>
-</div> -->

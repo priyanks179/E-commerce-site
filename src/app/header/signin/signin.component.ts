@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -27,8 +27,8 @@ export class SigninComponent implements OnInit {
  
   ngOnInit(): void {
     this.signinForm=new FormGroup({
-      'username': new FormControl(null),
-      'password':new FormControl(null)
+      'username': new FormControl(null,Validators.required),
+      'password':new FormControl(null,Validators.required)
     });
 
   }
@@ -51,6 +51,7 @@ export class SigninComponent implements OnInit {
       this.invalidLogin=true;
     },
     ()=>{
+      this.auth.setUsername(postData.username);
       this.auth.loggedIn.next(true);
       this.router.navigate(['../','products','search']);
     }

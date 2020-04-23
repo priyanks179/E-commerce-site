@@ -13,3 +13,7 @@ form {
     width: 300px;
     margin: 5% auto;
 }
+
+input.ng-invalid.ng-touched {
+    border: 1px red solid;
+}

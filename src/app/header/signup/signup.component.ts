@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormControl} from '@angular/forms'
+import { FormGroup, FormControl, Validators} from '@angular/forms'
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -16,13 +16,13 @@ export class SignupComponent implements OnInit {
               private router: Router){ }
 
   signupForm: FormGroup;
-  signupSuccess: Boolean;
+  signupSuccess: String=null;
 
   ngOnInit(): void {
     this.signupForm=new FormGroup({
-      'username': new FormControl(null),
-      'email': new FormControl(null),
-      'password':new FormControl(null)
+      'username': new FormControl(null,Validators.required),
+      'email': new FormControl(null,[Validators.required,Validators.email]),
+      'password':new FormControl(null,[Validators.required])
     });
 
   }
@@ -41,10 +41,11 @@ export class SignupComponent implements OnInit {
         console.log(responseData)
       },
       (error)=>{
+        this.signupSuccess="no";
         console.log(error)
       },
       ()=>{
-        this.signupSuccess=true;
+        this.signupSuccess="yes";
       }
       )
 

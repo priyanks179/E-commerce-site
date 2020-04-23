@@ -10,6 +10,7 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   Authorization:String
+  username:String
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   signin(postData){
@@ -27,5 +28,13 @@ export class AuthService {
   }
   getAuthToken(){
     return this.Authorization
+  }
+
+  setUsername(username: String) {
+    this.username=username;
+  }
+
+  getUsername() {
+    return this.username;
   }
 }

@@ -15,10 +15,14 @@ export class HeaderComponent implements OnInit,OnDestroy  {
 
    isLoggedIn$ =false;
    userSub: Subscription
+   username:String
+   cartUrl:String=null;
 
   ngOnInit(): void {
    this.auth.loggedIn.subscribe((data)=>{
+     this.cartUrl=`users/${this.auth.getUsername()}/product`
      this.isLoggedIn$=data;
+     //console.log(this.auth.getUsername())
       console.log(data);
    })
   }
@@ -30,9 +34,7 @@ export class HeaderComponent implements OnInit,OnDestroy  {
   onLogOut(){
     this.auth.setAuthToken(null);
     this.auth.loggedIn.next(false);
-    this.router.navigate(['signup']);
-    this.router.navigate(['../','products','search']);
-
+    this.router.navigate(['signin']);
   }
 
 }

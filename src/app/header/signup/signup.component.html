@@ -1,19 +1,31 @@
 <h1>Sign up</h1>
-<div class="alert alert-success center-block" *ngIf="signupSuccess" style="width: 50%;">
+<div class="alert alert-success center-block" *ngIf="signupSuccess=='yes'" style="width: 50%;">
   <strong>Success!</strong> You have Successfully SignedUp. Kindly Login !!
+</div>
+<div class="alert alert-warning center-block" *ngIf="signupSuccess=='no'" style="width: 50%;">
+  <strong>Sorry!</strong> Username Already exist !!! Kindly change the Username.
 </div>
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">Username:</label>
       <input type="text" class="form-control" id="username" formControlName="username">
     </div>
+    <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched"
+      class="help-block">Please enter a valid username!</span>
+
     <div class="form-group">
       <label for="email">Email address:</label>
       <input type="email" class="form-control" id="email" formControlName="email">
     </div>
+    <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched"
+      class="help-block">Please enter a valid email!</span>
+
     <div class="form-group">
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" formControlName="password">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <span *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched"
+      class="help-block">Please enter a valid password!</span>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Submit</button>
   </form>

@@ -14,6 +14,7 @@ import { ProductDeleteComponent } from './product/product-delete/product-delete.
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 import { ProductSearchComponent } from './product/product-search/product-search.component';
 import { AuthInterceptorService } from './header/auth-interceptor.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthInterceptorService } from './header/auth-interceptor.service';
     ProductAddComponent,
     ProductDeleteComponent,
     ProductUpdateComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
