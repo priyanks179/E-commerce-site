@@ -10,7 +10,7 @@ export class AuthService {
 
   Authorization: String;
   username: String;
-  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   signin(postData) {
     return this.http.post<any>('login', postData, {
