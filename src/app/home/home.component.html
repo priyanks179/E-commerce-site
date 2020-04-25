@@ -9,26 +9,35 @@
             </h3>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 mx-auto d-flex justify-content-center">
+        <div class="row w-100">
+          <div class="col-md-8 mx-auto d-flex justify-content-center w-100">
             <div class="w-100 p-3">
-              <label
-                for="search"
-                class="d-inline-block text-white m-0 px-3 mt-1"
-              >
+              <label for="search" class="d-inline-block text-white m-0 px-3">
                 Start Your Search
               </label>
-              <div class="w-100 bg-dark p-3">
-                <button type="button" class="btn-search-icon">
-                  <i class="fa fa-search"></i>
-                </button>
-                <input
-                  type="text"
-                  name="search"
-                  id="search"
-                  placeholder="Realme X"
-                />
-                <button type="button" class="btn-search">Search Now</button>
+              <div class="row w-100 bg-dark p-3 m-0">
+                <div class="col-md-8 p-0 col-sm-8 col-lg-9">
+                  <div class="input-group w-100">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="search-icon">
+                        <i class="fa fa-search"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="Realme X"
+                      class="form-control rounded-right"
+                      aria-describedby="search-icon"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4 p-0 mt-2 mt-sm-0 col-sm-4 col-lg-3">
+                  <button type="button" class="btn btn-light ml-sm-2 w-100">
+                    Search Now
+                  </button>
+                </div>
               </div>
             </div>
           </div>
