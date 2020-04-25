@@ -1,0 +1,122 @@
+<div
+  class="modal fade"
+  id="authenticationModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="authentication-form"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          {{ signupMode ? "SignUp Form" : "Login Form" }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          #closeBtn
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+          <div class="form-group">
+            <label for="username">Username: </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              class="form-control"
+              ngModel
+              #username="ngModel"
+              [ngClass]="{
+                'is-invalid': username.invalid && username.touched,
+                'is-valid':
+                  (username.valid && username.touched) ||
+                  (username.dirty && username.valid)
+              }"
+              required
+            />
+          </div>
+          <div class="form-group" *ngIf="signupMode">
+            <label for="email">Email: </label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Enter email"
+              class="form-control"
+              ngModel
+              #email="ngModel"
+              [ngClass]="{
+                'is-invalid': email.invalid && email.touched,
+                'is-valid':
+                  (email.valid && email.touched) || (email.dirty && email.valid)
+              }"
+              required
+              email
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password: </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              class="form-control"
+              ngModel
+              #password="ngModel"
+              [ngClass]="{
+                'is-invalid': password.invalid && password.touched,
+                'is-valid':
+                  (password.valid && password.touched) ||
+                  (password.dirty && password.valid)
+              }"
+              required
+            />
+          </div>
+          <button
+            class="btn btn-primary ld-ext-right"
+            type="submit"
+            [disabled]="form.invalid || isAuthenticating"
+            #loader
+          >
+            {{ signupMode ? "SignUp" : "Login" }}
+            <app-btn-loader *ngIf="isAuthenticating"></app-btn-loader>
+          </button>
+        </form>
+        <hr />
+        <div *ngIf="!signupMode" class="d-flex justify-content-end">
+          <p>
+            New here ?
+            <button
+              type="button"
+              (click)="onModeChange()"
+              class="btn btn-secondary"
+            >
+              Click Here to SignUp!
+            </button>
+          </p>
+        </div>
+        <div *ngIf="signupMode" class="d-flex justify-content-end">
+          <p>
+            Already have an account ?
+            <button
+              type="button"
+              (click)="onModeChange()"
+              class="btn btn-secondary"
+            >
+              Click Here to Login!
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

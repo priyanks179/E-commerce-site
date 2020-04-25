@@ -1,0 +1,23 @@
+.navbar {
+  height: 80px;
+  padding: 10px;
+  /* background-color: transparent; */
+}
+
+.btn {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#wish-nav,
+#cart-nav {
+  background-color: #f8f9fa;
+}
+
+#wish-nav:hover {
+  color: #c51104;
+}
+
+#cart-nav:hover {
+  color: #ee6631;
+}

@@ -1,15 +1,24 @@
 export class Product {
-    public title: String;
-    public descp: String;
-    public category: String;
-    public price: number;
-    public imgUrl: String;
+  id: number;
+  title: String;
+  descp: String;
+  category: String;
+  price: number;
+  imgUrl: String;
 
-    constructor(title: String,descp: String,category: String,price: number,imgUrl: String){
-        this.title=title;
-        this.category=category;
-        this.descp=descp;
-        this.price=price;
-        this.imgUrl=imgUrl;
-    }
+  constructor(
+    id: number,
+    title: String,
+    descp: String,
+    category: String,
+    price: number,
+    imgUrl: String
+  ) {
+    this.id = id;
+    this.title = title;
+    this.category = category;
+    this.descp = descp;
+    this.price = price;
+    this.imgUrl = imgUrl;
+  }
 }
