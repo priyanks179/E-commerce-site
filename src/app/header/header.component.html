@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-white">
   <div class="container-fluid">
     <a class="navbar-brand text-dark" routerLink="/">
-      <span class="text-danger">Fixed</span>Price
+      <span class="text-danger">FIXED</span>Price
     </a>
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf="!isLoggedIn" class="nav-item">
@@ -20,15 +20,16 @@
         </a>
       </li>
       <li *ngIf="isLoggedIn" class="navbar-item">
-        <a routerLink="/cart" class="btn mr-2" id="wish-nav">
-          <i class="fas fa-heart"></i> | {{ wishCount }}
-        </a>
+        <div class="btn-group">
+          <a routerLink="/cart" class="btn" id="wish-nav">
+            <i class="fas fa-heart"></i> | {{ wishCount }}
+          </a>
+          <a routerLink="/cart" class="btn mr-2" id="cart-nav">
+            <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
+          </a>
+        </div>
       </li>
-      <li *ngIf="isLoggedIn" class="navbar-item">
-        <a routerLink="/cart" class="btn mr-2" id="cart-nav">
-          <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
-        </a>
-      </li>
+      <!-- <li *ngIf="isLoggedIn" class="navbar-item"></li> -->
       <li *ngIf="isLoggedIn" class="navbar-item">
         <button (click)="onLogOut()" class="btn btn-danger text-white">
           <i class="fas fa-sign-out-alt"></i> Logout

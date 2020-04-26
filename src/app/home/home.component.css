@@ -14,6 +14,16 @@ label {
   clip-path: polygon(0 0, 92% 0, 100% 100%, 0% 100%);
 }
 
+.form-control {
+  padding: 10px;
+  height: fit-content;
+}
+
+.btn {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .form-control:focus {
   box-shadow: none;
 }
