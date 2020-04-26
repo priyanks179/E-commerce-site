@@ -64,6 +64,7 @@ export class AuthenticationComponent implements OnInit {
       (res) => {
         this.authService.setAuthToken(res.headers.get('Authorization'));
         this.authService.setUsername(postData.username);
+        localStorage.setItem('username', postData.username);
         this.authService.loggedIn.next(true);
         this.isAuthenticating = false;
         this.closeBtn.nativeElement.click();
