@@ -5,6 +5,7 @@ export class Product {
   category: String;
   price: number;
   imgUrl: String;
+  pId?: any;
 
   constructor(
     id: number,

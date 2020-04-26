@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
-
   Authorization: String;
   username: String;
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   tokenExpirationTimer;
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   signin(postData) {
     return this.http
@@ -40,6 +41,7 @@ export class AuthService {
     localStorage.removeItem('username');
     localStorage.removeItem('token');
     localStorage.removeItem('expires');
+    this.router.navigate(['/']);
   }
 
   autoLogin() {
@@ -60,7 +62,7 @@ export class AuthService {
   }
 
   signup(postData) {
-    return this.http.post('users/', postData);
+    return this.http.post('users', postData);
   }
 
   setAuthToken(token: String) {

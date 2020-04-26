@@ -15,6 +15,9 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
 import { ProductFormComponent } from './products/product-form/product-form.component';
 import { HomeComponent } from './home/home.component';
 import { BtnLoaderComponent } from './shared/btn-loader/btn-loader.component';
+import { StarRatingComponent } from './products/product-item/star-rating/star-rating.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { CategoryComponent } from './products/category/category.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { BtnLoaderComponent } from './shared/btn-loader/btn-loader.component';
     ProductFormComponent,
     HomeComponent,
     BtnLoaderComponent,
+    StarRatingComponent,
+    LoadingSpinnerComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

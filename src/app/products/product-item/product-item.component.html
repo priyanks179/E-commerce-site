@@ -1,1 +1,54 @@
-<p>product-item works!</p>
+<div class="card mb-3 w-100">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img [src]="product.imgUrl" class="card-img-top img-fluid" alt="" />
+    </div>
+    <div class="col-md-6 h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.descp }}</p>
+        <div>
+          <button class="btn btn-light">₹ {{ product.price }}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 d-flex flex-column justify-content-end">
+      <div class="btn-group-vertical ml-auto h-100 w-50 d-none d-md-flex">
+        <a
+          class="btn btn-danger rounded-0 d-flex align-items-center justify-content-center text-white"
+          style="border-top-right-radius: 0.25rem !important;"
+        >
+          <i class="fas fa-heart"></i>
+        </a>
+        <a
+          class="btn btn-warning rounded-0 d-flex align-items-center justify-content-center"
+        >
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a
+          class="btn btn-primary rounded-0 d-flex align-items-center justify-content-center text-white"
+          style="border-bottom-right-radius: 0.25rem !important;"
+        >
+          <i class="far fa-check-square"></i>
+        </a>
+      </div>
+      <div class="btn-group h-100 w-100 d-md-none">
+        <a
+          class="btn btn-danger rounded-0 d-flex align-items-center justify-content-center text-white"
+        >
+          <i class="fas fa-heart"></i>
+        </a>
+        <a
+          class="btn btn-warning rounded-0 d-flex align-items-center justify-content-center"
+        >
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a
+          class="btn btn-primary rounded-0 d-flex align-items-center justify-content-center text-white"
+        >
+          <i class="far fa-check-square"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

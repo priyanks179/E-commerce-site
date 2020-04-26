@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.loggedIn.subscribe((data) => {
       this.cartUrl = `users/${this.authService.getUsername()}/product`;
       this.isLoggedIn = data;
-      console.log(data);
     });
   }
 

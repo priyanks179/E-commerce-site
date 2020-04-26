@@ -1,1 +1,31 @@
-<p>products works!</p>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-4 d-none d-sm-block mb-4">
+      <app-category></app-category>
+    </div>
+    <div
+      class="col-md-8 mb-4"
+      [ngClass]="{
+        'd-flex justify-content-center align-items-center': !products
+      }"
+    >
+      <div class="card-columns mb-4" *ngIf="products">
+        <app-product-item
+          *ngFor="let product of products"
+          [product]="product"
+        ></app-product-item>
+      </div>
+      <app-loading-spinner *ngIf="!products"></app-loading-spinner>
+    </div>
+  </div>
+
+  <div
+    class="row p-3 fixed-bottom d-flex justify-content-center"
+    id="scroll-btn"
+    *ngIf="scrollTopBtn"
+  >
+    <button class="btn btn-light box-shadow" (click)="scrollToElement()">
+      Scroll To Top <i class="far fa-arrow-alt-circle-up"></i>
+    </button>
+  </div>
+</div>
