@@ -12,27 +12,46 @@
             class="btn btn-primary"
             data-toggle="modal"
             data-target="#authenticationModal"
+            onclick="this.blur()"
           >
             <i class="fas fa-sign-in-alt"></i> Login
           </button>
         </li>
         <li *ngIf="isLoggedIn" class="navbar-item d-none d-sm-inline-block">
-          <a routerLink="/" class="btn btn-dark text-white mr-2">
+          <a
+            routerLink="/"
+            class="btn btn-dark text-white mr-2"
+            onclick="this.blur()"
+          >
             <i class="fas fa-history"></i> Past Orders
           </a>
         </li>
         <li *ngIf="isLoggedIn" class="navbar-item d-none d-sm-inline-block">
           <div class="btn-group">
-            <a routerLink="/cart" class="btn" id="wish-nav">
+            <a
+              routerLink="/cart"
+              class="btn"
+              id="wish-nav"
+              onclick="this.blur()"
+            >
               <i class="fas fa-heart"></i> | {{ wishCount }}
             </a>
-            <a routerLink="/cart" class="btn mr-2" id="cart-nav">
+            <a
+              routerLink="/cart"
+              class="btn mr-2"
+              id="cart-nav"
+              onclick="this.blur()"
+            >
               <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
             </a>
           </div>
         </li>
         <li *ngIf="isLoggedIn" class="navbar-item">
-          <button (click)="onLogOut()" class="btn btn-danger text-white">
+          <button
+            (click)="onLogOut()"
+            class="btn btn-danger text-white"
+            onclick="this.blur()"
+          >
             <i class="fas fa-sign-out-alt"></i> Logout
           </button>
         </li>
@@ -43,27 +62,38 @@
 
 <div class="container-fluid fixed-bottom bg-light d-sm-none box-shadow p-0">
   <div class="btn-group w-100 h-100">
-    <a routerLink="/" class="btn btn-dark text-white rounded-0">
+    <a
+      routerLink="/"
+      class="btn btn-dark text-white rounded-0"
+      onclick="this.blur()"
+    >
       <i class="fas fa-history"></i>
     </a>
     <a
       routerLink="/cart"
       class="btn btn-dark rounded-0 text-white"
       id="wish-nav"
+      *ngIf="wishCount >= 0"
+      onclick="this.blur()"
     >
-      <i class="fas fa-heart"></i> | {{ wishCount }}
+      <i class="fas fa-heart"></i>
+      <span> | {{ wishCount }} </span>
     </a>
     <a
       routerLink="/cart"
       class="btn btn-dark rounded-0 text-white"
       id="cart-nav"
+      *ngIf="cartCount >= 0"
+      onclick="this.blur()"
     >
-      <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
+      <i class="fas fa-shopping-cart"></i>
+      <span> | {{ cartCount }} </span>
     </a>
     <button
       class="btn btn-light rounded-0"
       (click)="scrollToElement()"
       *ngIf="scrollTopBtn"
+      onclick="this.blur()"
     >
       <i class="far fa-arrow-alt-circle-up"></i>
     </button>

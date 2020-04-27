@@ -18,6 +18,7 @@ import { BtnLoaderComponent } from './shared/btn-loader/btn-loader.component';
 import { StarRatingComponent } from './products/product-item/star-rating/star-rating.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { CategoryComponent } from './products/category/category.component';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CategoryComponent } from './products/category/category.component';
     StarRatingComponent,
     LoadingSpinnerComponent,
     CategoryComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,

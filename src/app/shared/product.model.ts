@@ -6,6 +6,7 @@ export class Product {
   price: number;
   imgUrl: String;
   pId?: any;
+  cId?: any;
   quantity: number;
 
   constructor(

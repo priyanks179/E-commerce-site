@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -48,7 +49,6 @@ export class AuthService {
     if (localStorage.getItem('token')) {
       this.setAuthToken(localStorage.getItem('token'));
       this.setUsername(localStorage.getItem('username'));
-      console.log(this.getUsername());
       this.loggedIn.next(true);
       const expDate = JSON.parse(localStorage.getItem('expires'));
       this.autoLogout(new Date(expDate).getTime() - new Date().getTime());

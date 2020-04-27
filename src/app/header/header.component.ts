@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AuthService } from '../authentication/auth.service';
 import { Observable, Subscription } from 'rxjs';
 import { Router, Route } from '@angular/router';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -9,20 +10,37 @@ import { Router, Route } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  constructor(private authService: AuthService) {}
-  cartCount: number = 5;
-  wishCount: number = 5;
+  cartCount: number;
+  wishCount: number;
   isLoggedIn = false;
   userSub: Subscription;
+  cartCountSub: Subscription;
+  wishCountSub: Subscription;
   username: String;
   cartUrl: String = null;
   scrollTopBtn: boolean = false;
+  constructor(
+    private authService: AuthService,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit(): void {
-    this.authService.loggedIn.subscribe((data) => {
+    this.userSub = this.authService.loggedIn.subscribe((data) => {
       this.cartUrl = `users/${this.authService.getUsername()}/product`;
       this.isLoggedIn = data;
     });
+    if (this.isLoggedIn) {
+      this.cartCountSub = this.dataStorageService.cartCount.subscribe(
+        (count) => {
+          this.cartCount = count;
+        }
+      );
+      this.wishCountSub = this.dataStorageService.wishCount.subscribe(
+        (count) => {
+          this.wishCount = count;
+        }
+      );
+    }
   }
 
   @HostListener('window:scroll')
@@ -43,6 +61,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authService.loggedIn.unsubscribe();
+    this.cartCountSub.unsubscribe();
+    this.wishCountSub.unsubscribe();
   }
 
   onLogOut() {

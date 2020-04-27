@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-authentication',
@@ -18,7 +19,11 @@ export class AuthenticationComponent implements OnInit {
     message: '',
   };
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -33,6 +38,8 @@ export class AuthenticationComponent implements OnInit {
     } else {
       this.onLogin();
     }
+    this.dataStorageService.fetchCartCount();
+    this.dataStorageService.fetchWishListCount();
   }
 
   onSignUp() {

@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Product } from '../shared/product.model';
 import { AuthService } from '../authentication/auth.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { DataStorageService } from '../shared/data-storage.service';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,41 +11,33 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  cart: Product[];
+  cartLoading: Boolean = false;
+  word: string = 'item';
+  totalCost: number = 0;
+  totalPayableAmount: number = 0;
+
   constructor(
-    private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dataStorageService: DataStorageService,
+    private cartService: CartService
   ) {}
 
-  mySubscription: any;
-  userProducts: Product[];
-  username: String;
   ngOnInit(): void {
-    this.username = this.route.snapshot.params['username'];
-    this.http
-      .get<Product[]>(`http://localhost:8001/users/${this.username}/product`)
-      .subscribe((products) => {
-        this.userProducts = products;
+    this.cartLoading = true;
+    this.dataStorageService.fetchCart().subscribe();
+    this.cartService.cartChanged.subscribe((cart: Product[]) => {
+      this.cart = cart;
+      this.cartLoading = false;
+      this.totalCost = 0;
+      if (this.cart.length > 1) {
+        this.word = 'items';
+      }
+      this.cart.map((item) => {
+        this.totalCost += +item.price * +item.quantity;
       });
-  }
-
-  removeItem(pId: Number) {
-    this.http
-      .delete(`http://localhost:8001/users/${this.username}/product/${pId}`)
-      .subscribe(
-        (res) => {
-          console.log(res);
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {
-          this.router
-            .navigateByUrl('/', { skipLocationChange: true })
-            .then(() => {
-              this.router.navigate(['users', this.username, 'product']);
-            });
-        }
-      );
+      this.totalPayableAmount = this.totalCost + 50;
+    });
   }
 }
