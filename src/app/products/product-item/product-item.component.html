@@ -8,7 +8,18 @@
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">{{ product.descp }}</p>
         <div>
-          <button class="btn btn-light">₹ {{ product.price }}</button>
+          <button class="btn btn-light mr-2">₹ {{ product.price }}</button>
+          <button
+            class="btn"
+            [ngClass]="{
+              'btn-primary': product.quantity > 10 ? true : false,
+              'btn-warning': product.quantity > 5 && product.quantity <= 10,
+              'btn-danger': product.quantity <= 5
+            }"
+          >
+            Stock Available
+            <span class="badge badge-light">{{ product.quantity }}</span>
+          </button>
         </div>
       </div>
     </div>
@@ -17,17 +28,20 @@
         <a
           class="btn btn-danger rounded-0 d-flex align-items-center justify-content-center text-white"
           style="border-top-right-radius: 0.25rem !important;"
+          (click)="onAddWishList()"
         >
           <i class="fas fa-heart"></i>
         </a>
         <a
           class="btn btn-warning rounded-0 d-flex align-items-center justify-content-center"
+          (click)="onAddCart()"
         >
           <i class="fas fa-shopping-cart"></i>
         </a>
         <a
           class="btn btn-primary rounded-0 d-flex align-items-center justify-content-center text-white"
           style="border-bottom-right-radius: 0.25rem !important;"
+          (click)="onCheckOut()"
         >
           <i class="far fa-check-square"></i>
         </a>
@@ -35,16 +49,19 @@
       <div class="btn-group h-100 w-100 d-md-none">
         <a
           class="btn btn-danger rounded-0 d-flex align-items-center justify-content-center text-white"
+          (click)="onAddWishList()"
         >
           <i class="fas fa-heart"></i>
         </a>
         <a
           class="btn btn-warning rounded-0 d-flex align-items-center justify-content-center"
+          (click)="onAddCart()"
         >
           <i class="fas fa-shopping-cart"></i>
         </a>
         <a
           class="btn btn-primary rounded-0 d-flex align-items-center justify-content-center text-white"
+          (click)="onCheckOut()"
         >
           <i class="far fa-check-square"></i>
         </a>

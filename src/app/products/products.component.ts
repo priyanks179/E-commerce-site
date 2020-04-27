@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   @HostListener('window:scroll')
   scrollControl() {
-    if (window.scrollY > 500) {
+    if (window.scrollY > 500 && screen.width > 576) {
       this.scrollTopBtn = true;
     } else {
       this.scrollTopBtn = false;

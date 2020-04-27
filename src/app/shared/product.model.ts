@@ -6,6 +6,7 @@ export class Product {
   price: number;
   imgUrl: String;
   pId?: any;
+  quantity: number;
 
   constructor(
     id: number,
@@ -13,7 +14,8 @@ export class Product {
     descp: String,
     category: String,
     price: number,
-    imgUrl: String
+    imgUrl: String,
+    quantity: number
   ) {
     this.id = id;
     this.title = title;
@@ -21,5 +23,6 @@ export class Product {
     this.descp = descp;
     this.price = price;
     this.imgUrl = imgUrl;
+    this.quantity = quantity;
   }
 }

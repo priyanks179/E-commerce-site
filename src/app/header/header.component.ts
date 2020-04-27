@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AuthService } from '../authentication/auth.service';
 import { Observable, Subscription } from 'rxjs';
 import { Router, Route } from '@angular/router';
@@ -16,11 +16,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userSub: Subscription;
   username: String;
   cartUrl: String = null;
+  scrollTopBtn: boolean = false;
 
   ngOnInit(): void {
     this.authService.loggedIn.subscribe((data) => {
       this.cartUrl = `users/${this.authService.getUsername()}/product`;
       this.isLoggedIn = data;
+    });
+  }
+
+  @HostListener('window:scroll')
+  scrollControl() {
+    if (window.scrollY > 500) {
+      this.scrollTopBtn = true;
+    } else {
+      this.scrollTopBtn = false;
+    }
+  }
+
+  scrollToElement() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
     });
   }
 

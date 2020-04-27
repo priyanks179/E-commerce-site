@@ -48,6 +48,7 @@ export class AuthService {
     if (localStorage.getItem('token')) {
       this.setAuthToken(localStorage.getItem('token'));
       this.setUsername(localStorage.getItem('username'));
+      console.log(this.getUsername());
       this.loggedIn.next(true);
       const expDate = JSON.parse(localStorage.getItem('expires'));
       this.autoLogout(new Date(expDate).getTime() - new Date().getTime());

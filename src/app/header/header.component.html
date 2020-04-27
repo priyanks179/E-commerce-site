@@ -1,39 +1,71 @@
-<nav class="navbar navbar-expand-lg fixed-top bg-white box-shadow">
+<nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light box-shadow">
   <div class="container-fluid">
     <a class="navbar-brand text-dark" routerLink="/">
       <span class="text-danger">FIXED</span>Price
     </a>
-    <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="!isLoggedIn" class="nav-item">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#authenticationModal"
-        >
-          <i class="fas fa-sign-in-alt"></i> Login
-        </button>
-      </li>
-      <li *ngIf="isLoggedIn" class="navbar-item">
-        <a routerLink="/" class="btn btn-dark text-white mr-2">
-          <i class="fas fa-history"></i> Past Orders
-        </a>
-      </li>
-      <li *ngIf="isLoggedIn" class="navbar-item">
-        <div class="btn-group">
-          <a routerLink="/cart" class="btn" id="wish-nav">
-            <i class="fas fa-heart"></i> | {{ wishCount }}
+
+    <div class="" id="sidebar">
+      <ul class="navbar-nav navbar-right ml-auto">
+        <li *ngIf="!isLoggedIn" class="nav-item">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#authenticationModal"
+          >
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+        </li>
+        <li *ngIf="isLoggedIn" class="navbar-item d-none d-sm-inline-block">
+          <a routerLink="/" class="btn btn-dark text-white mr-2">
+            <i class="fas fa-history"></i> Past Orders
           </a>
-          <a routerLink="/cart" class="btn mr-2" id="cart-nav">
-            <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
-          </a>
-        </div>
-      </li>
-      <li *ngIf="isLoggedIn" class="navbar-item">
-        <button (click)="onLogOut()" class="btn btn-danger text-white">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-      </li>
-    </ul>
+        </li>
+        <li *ngIf="isLoggedIn" class="navbar-item d-none d-sm-inline-block">
+          <div class="btn-group">
+            <a routerLink="/cart" class="btn" id="wish-nav">
+              <i class="fas fa-heart"></i> | {{ wishCount }}
+            </a>
+            <a routerLink="/cart" class="btn mr-2" id="cart-nav">
+              <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
+            </a>
+          </div>
+        </li>
+        <li *ngIf="isLoggedIn" class="navbar-item">
+          <button (click)="onLogOut()" class="btn btn-danger text-white">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
+
+<div class="container-fluid fixed-bottom bg-light d-sm-none box-shadow p-0">
+  <div class="btn-group w-100 h-100">
+    <a routerLink="/" class="btn btn-dark text-white rounded-0">
+      <i class="fas fa-history"></i>
+    </a>
+    <a
+      routerLink="/cart"
+      class="btn btn-dark rounded-0 text-white"
+      id="wish-nav"
+    >
+      <i class="fas fa-heart"></i> | {{ wishCount }}
+    </a>
+    <a
+      routerLink="/cart"
+      class="btn btn-dark rounded-0 text-white"
+      id="cart-nav"
+    >
+      <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
+    </a>
+    <button
+      class="btn btn-light rounded-0"
+      (click)="scrollToElement()"
+      *ngIf="scrollTopBtn"
+    >
+      <i class="far fa-arrow-alt-circle-up"></i>
+    </button>
+  </div>
+</div>

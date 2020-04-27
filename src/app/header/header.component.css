@@ -13,11 +13,6 @@
   padding-bottom: 10px;
 }
 
-#wish-nav,
-#cart-nav {
-  background-color: #f8f9fa;
-}
-
 #wish-nav:hover {
   color: #c51104;
 }
