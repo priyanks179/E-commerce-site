@@ -17,7 +17,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.autoLogin();
-    this.dataStorageService.fetchCartCount();
-    this.dataStorageService.fetchWishListCount();
+    this.authService.loggedIn.subscribe((isAuhthenticated) => {
+      if (isAuhthenticated) {
+        this.dataStorageService.fetchCartCount();
+        this.dataStorageService.fetchWishListCount();
+      }
+    });
   }
 }

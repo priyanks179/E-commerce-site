@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DataStorageService } from '../shared/data-storage.service';
@@ -12,6 +12,7 @@ export class AuthService {
   Authorization: String;
   username: String;
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  formCalled = new Subject<boolean>();
   tokenExpirationTimer;
 
   constructor(private http: HttpClient, private router: Router) {}

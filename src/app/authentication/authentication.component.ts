@@ -25,10 +25,17 @@ export class AuthenticationComponent implements OnInit {
     private dataStorageService: DataStorageService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.formCalled.subscribe((isCalled) => {
+      this.form.reset();
+      this.error.message = '';
+    });
+  }
 
   onModeChange() {
     this.signupMode = !this.signupMode;
+    this.form.reset();
+    this.error.message = '';
   }
 
   onSubmit() {
@@ -38,8 +45,6 @@ export class AuthenticationComponent implements OnInit {
     } else {
       this.onLogin();
     }
-    this.dataStorageService.fetchCartCount();
-    this.dataStorageService.fetchWishListCount();
   }
 
   onSignUp() {
@@ -56,7 +61,7 @@ export class AuthenticationComponent implements OnInit {
         this.onLogin();
       },
       (error) => {
-        this.error.message = 'Some error occurred!';
+        this.error.message = 'Please Try Again';
       }
     );
   }
@@ -72,13 +77,17 @@ export class AuthenticationComponent implements OnInit {
         this.authService.setAuthToken(res.headers.get('Authorization'));
         this.authService.setUsername(postData.username);
         localStorage.setItem('username', postData.username);
-        this.authService.loggedIn.next(true);
         this.isAuthenticating = false;
+        this.dataStorageService.fetchCartCount();
+        this.dataStorageService.fetchWishListCount();
         this.closeBtn.nativeElement.click();
+        this.authService.loggedIn.next(true);
         this.router.navigate(['/']);
       },
       (error) => {
-        this.error.message = 'Some error occurred';
+        this.error.message = 'Invalid Credentials!';
+        this.isAuthenticating = false;
+        this.form.reset();
       }
     );
   }

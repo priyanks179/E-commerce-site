@@ -52,6 +52,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  callForm() {
+    this.authService.formCalled.next(true);
+  }
+
   scrollToElement() {
     window.scrollTo({
       top: 0,

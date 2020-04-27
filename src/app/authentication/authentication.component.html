@@ -23,6 +23,9 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="alert alert-danger" *ngIf="error.message">
+          {{ error.message }}
+        </div>
         <form (ngSubmit)="onSubmit()" #form="ngForm">
           <div class="form-group">
             <label for="username">Username: </label>
@@ -85,6 +88,7 @@
             class="btn btn-primary ld-ext-right"
             type="submit"
             [disabled]="form.invalid || isAuthenticating"
+            onclick="this.blur()"
             #loader
           >
             {{ signupMode ? "SignUp" : "Login" }}
@@ -99,6 +103,7 @@
               type="button"
               (click)="onModeChange()"
               class="btn btn-secondary"
+              onclick="this.blur()"
             >
               Click Here to SignUp!
             </button>
@@ -111,6 +116,7 @@
               type="button"
               (click)="onModeChange()"
               class="btn btn-secondary"
+              onclick="this.blur()"
             >
               Click Here to Login!
             </button>

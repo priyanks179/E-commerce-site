@@ -28,6 +28,9 @@ export class CartComponent implements OnInit {
     this.cartLoading = true;
     this.dataStorageService.fetchCart().subscribe();
     this.cartService.cartChanged.subscribe((cart: Product[]) => {
+      if (cart.length === 0) {
+        this.router.navigate(['/']);
+      }
       this.cart = cart;
       this.cartLoading = false;
       this.totalCost = 0;

@@ -1,8 +1,8 @@
 <div class="container-fluid mt-4 pt-4">
   <div class="row pt-4 mt-4">
     <div class="col-12 d-flex justify-content-center">
-      <div class="row w-100" *ngIf="!this.cartLoading">
-        <div class="col-md-7 mr-sm-3 p-0" *ngIf="cart">
+      <div class="row w-100" *ngIf="!cartLoading">
+        <div class="col-md-7 mr-sm-3 p-0" *ngIf="cart.length !== 0">
           <div class="card-columns mb-4">
             <app-cart-item
               *ngFor="let item of cart"
@@ -12,10 +12,10 @@
         </div>
         <div
           class="col-md-4 ml-sm-4 p-0 d-flex justify-content-center mb-4 pb-4"
-          *ngIf="cart"
+          *ngIf="cart.length !== 0"
         >
           <div class="my-card w-100 mb-4">
-            <div class="card-header">
+            <div class="card-header" style="font-weight: bold;">
               PRICE DETAILS
             </div>
             <div
@@ -35,7 +35,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-footer">
+            <div class="card-footer" style="font-weight: bold;">
               <div class="w-50 d-inline-block">
                 <div>
                   TOTAL AMOUNT
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <app-loading-spinner *ngIf="this.cartLoading"></app-loading-spinner>
+      <app-loading-spinner *ngIf="cartLoading"></app-loading-spinner>
     </div>
   </div>
 </div>
