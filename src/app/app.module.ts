@@ -19,6 +19,10 @@ import { StarRatingComponent } from './products/product-item/star-rating/star-ra
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { CategoryComponent } from './products/category/category.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { WishlistItemComponent } from './wishlist/wishlist-item/wishlist-item.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderHistoryItemsComponent } from './order-history/order-history-items/order-history-items.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     LoadingSpinnerComponent,
     CategoryComponent,
     CartItemComponent,
+    WishlistComponent,
+    WishlistItemComponent,
+    OrderHistoryComponent,
+    OrderHistoryItemsComponent,
   ],
   imports: [
     BrowserModule,

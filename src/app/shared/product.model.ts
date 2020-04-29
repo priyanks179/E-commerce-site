@@ -7,6 +7,7 @@ export class Product {
   imgUrl: String;
   pId?: any;
   cId?: any;
+  wId?: any;
   quantity: number;
 
   constructor(

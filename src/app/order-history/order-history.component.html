@@ -1,0 +1,15 @@
+<div class="container mt-4 pt-4">
+  <div class="row pt-4 mt-4">
+    <div class="col-12 d-flex justify-content-center">
+      <div class="col-12 col-md-10 mx-auto mb-3" *ngIf="!ordersLoading">
+        <div class="card-columns mb-4">
+          <app-order-history-items
+            *ngFor="let item of orders"
+            [item]="item"
+          ></app-order-history-items>
+        </div>
+      </div>
+      <app-loading-spinner *ngIf="ordersLoading"></app-loading-spinner>
+    </div>
+  </div>
+</div>

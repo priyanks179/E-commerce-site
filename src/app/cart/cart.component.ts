@@ -43,4 +43,9 @@ export class CartComponent implements OnInit {
       this.totalPayableAmount = this.totalCost + 50;
     });
   }
+
+  onCheckout() {
+    this.dataStorageService.checkout().subscribe();
+    this.router.navigate(['/']);
+  }
 }

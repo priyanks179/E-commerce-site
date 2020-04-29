@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/shared/product.model';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-item',
@@ -9,7 +10,10 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(
+    private dataStorageService: DataStorageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,6 +26,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   onCheckOut() {
-    console.log('checkout');
+    this.router.navigate(['/cart']);
   }
 }

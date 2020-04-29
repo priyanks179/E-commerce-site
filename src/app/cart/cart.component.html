@@ -11,10 +11,10 @@
           </div>
         </div>
         <div
-          class="col-md-4 ml-sm-4 p-0 d-flex justify-content-center mb-4 pb-4"
+          class="col-md-4 ml-sm-4 p-0 d-flex align-items-center flex-column mb-4 pb-4"
           *ngIf="cart.length !== 0"
         >
-          <div class="my-card w-100 mb-4">
+          <div class="my-card w-100 mb-3">
             <div class="card-header" style="font-weight: bold;">
               PRICE DETAILS
             </div>
@@ -45,6 +45,13 @@
                 <div>₹ {{ totalPayableAmount }}</div>
               </div>
             </div>
+            <hr />
+            <button
+              class="btn btn-primary d-block mb-3 ml-auto mr-3"
+              (click)="onCheckout()"
+            >
+              <i class="far fa-check-circle"></i> Checkout
+            </button>
           </div>
         </div>
       </div>

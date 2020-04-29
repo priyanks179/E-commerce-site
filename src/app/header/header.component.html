@@ -20,7 +20,7 @@
         </li>
         <li *ngIf="isLoggedIn" class="navbar-item d-none d-sm-inline-block">
           <a
-            routerLink="/"
+            routerLink="/history"
             class="btn btn-dark text-white mr-2"
             onclick="this.blur()"
           >
@@ -30,12 +30,13 @@
         <li *ngIf="isLoggedIn" class="navbar-item d-none d-sm-inline-block">
           <div class="btn-group">
             <a
-              [routerLink]="[cartCount && cartCount > 0 ? '/cart' : '/']"
+              [routerLink]="[wishCount && wishCount > 0 ? '/wishlist' : '/']"
               class="btn"
               id="wish-nav"
               onclick="this.blur()"
             >
-              <i class="fas fa-heart"></i> | {{ wishCount }}
+              <i class="fas fa-heart"></i>
+              <span *ngIf="wishCount >= 0"> | {{ wishCount }} </span>
             </a>
             <a
               [routerLink]="[cartCount && cartCount > 0 ? '/cart' : '/']"
@@ -43,7 +44,8 @@
               id="cart-nav"
               onclick="this.blur()"
             >
-              <i class="fas fa-shopping-cart"></i> | {{ cartCount }}
+              <i class="fas fa-shopping-cart"></i>
+              <span *ngIf="cartCount >= 0"> | {{ cartCount }} </span>
             </a>
           </div>
         </li>
@@ -64,31 +66,29 @@
 <div class="container-fluid fixed-bottom bg-light d-sm-none box-shadow p-0">
   <div class="btn-group w-100 h-100">
     <a
-      routerLink="/"
+      routerLink="/history"
       class="btn btn-dark text-white rounded-0"
       onclick="this.blur()"
     >
       <i class="fas fa-history"></i>
     </a>
     <a
-      [routerLink]="[cartCount && cartCount > 0 ? '/cart' : '/']"
+      [routerLink]="[wishCount && wishCount > 0 ? '/wishlist' : '/']"
       class="btn btn-dark rounded-0 text-white"
       id="wish-nav"
-      *ngIf="wishCount >= 0"
       onclick="this.blur()"
     >
       <i class="fas fa-heart"></i>
-      <span> | {{ wishCount }} </span>
+      <span *ngIf="wishCount >= 0"> | {{ wishCount }} </span>
     </a>
     <a
       [routerLink]="[cartCount && cartCount > 0 ? '/cart' : '/']"
       class="btn btn-dark rounded-0 text-white"
       id="cart-nav"
-      *ngIf="cartCount >= 0"
       onclick="this.blur()"
     >
       <i class="fas fa-shopping-cart"></i>
-      <span> | {{ cartCount }} </span>
+      <span *ngIf="cartCount >= 0"> | {{ cartCount }} </span>
     </a>
     <button
       class="btn btn-light rounded-0"

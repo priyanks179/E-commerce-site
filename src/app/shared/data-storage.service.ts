@@ -6,6 +6,7 @@ import { Product } from './product.model';
 import { AuthService } from '../authentication/auth.service';
 import { Subject } from 'rxjs';
 import { CartService } from '../cart/cart.service';
+import { WishlistService } from '../wishlist/wishlist.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class DataStorageService {
     private http: HttpClient,
     private productService: ProductsService,
     private cartService: CartService,
+    private wishlistService: WishlistService,
     private authService: AuthService
   ) {}
 
@@ -99,18 +101,18 @@ export class DataStorageService {
     return this.http
       .get<Product[]>(`users/${this.authService.getUsername()}/wishlist`)
       .pipe(
-        map((products) => {
-          return products.map((product) => {
-            const id = product.pId;
-            delete product.pId;
+        map((wishlist) => {
+          return wishlist.map((item) => {
+            const id = item.wId;
+            delete item.wId;
             return {
-              ...product,
+              ...item,
               id,
             };
           });
         }),
-        tap((products) => {
-          this.productService.setProducts(products);
+        tap((wishlist) => {
+          this.wishlistService.setwishlist(wishlist);
         })
       );
   }
@@ -125,7 +127,9 @@ export class DataStorageService {
 
   addToWishList(id: number) {
     return this.http
-      .post(`users/${this.authService.getUsername()}/wishlist/${id}`, null)
+      .post(`users/${this.authService.getUsername()}/wishlist/${id}`, null, {
+        responseType: 'text',
+      })
       .pipe(
         tap(() => {
           this.fetchWishListCount();
@@ -139,6 +143,22 @@ export class DataStorageService {
       .pipe(
         tap(() => {
           this.fetchWishListCount();
+        })
+      );
+  }
+
+  fetchPastOrders() {
+    return this.http.get<Product[]>(
+      `users/${this.authService.getUsername()}/previousOrder`
+    );
+  }
+
+  checkout() {
+    return this.http
+      .post(`users/${this.authService.getUsername()}/checkout`, null)
+      .pipe(
+        tap(() => {
+          this.fetchCartCount();
         })
       );
   }

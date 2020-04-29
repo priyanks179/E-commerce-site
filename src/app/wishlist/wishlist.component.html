@@ -1,0 +1,15 @@
+<div class="container mt-4 pt-4">
+  <div class="row pt-4 mt-4">
+    <div class="col-12 d-flex justify-content-center">
+      <div class="col-12 col-md-10 mx-auto mb-3" *ngIf="!wishlistLoading">
+        <div class="card-columns mb-4">
+          <app-wishlist-item
+            *ngFor="let item of wishlist"
+            [item]="item"
+          ></app-wishlist-item>
+        </div>
+      </div>
+      <app-loading-spinner *ngIf="wishlistLoading"></app-loading-spinner>
+    </div>
+  </div>
+</div>
