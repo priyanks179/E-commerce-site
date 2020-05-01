@@ -54,8 +54,6 @@ export class AuthenticationComponent implements OnInit {
       password: this.form.value.password,
     };
 
-    console.log(postData);
-
     this.authService.signup(postData).subscribe(
       (responseData) => {
         this.onLogin();

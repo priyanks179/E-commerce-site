@@ -1,22 +1,29 @@
-<div class="card mb-3 w-100">
+<div>
+  <h4>
+    {{ date }}
+  </h4>
+</div>
+<hr />
+<div class="card mb-3 w-100" *ngFor="let details of orders">
   <div class="row no-gutters">
     <div class="col-md-4">
       <img
-        [src]="item.imgUrl"
+        [src]="details.imgUrl"
         class="card-img-top"
         width="250px"
-        height="185px"
+        height="200px"
       />
     </div>
     <div class="col-md-6 h-100">
       <div class="card-body h-100">
-        <h5 class="card-title" #title>{{ item.title }}</h5>
+        <h5 class="card-title" #title>{{ details.title }}</h5>
         <p>
           <span class="badge badge-light" style="font-size: medium;">
-            ₹ {{ item.price }} / item
+            ₹ {{ details.price }} / item
           </span>
         </p>
-        <p>Quantity Purchased: {{ item.quantity }}</p>
+        <p>Quantity Purchased: {{ details.quantity }}</p>
+        <p>Order Id: #{{ details.oid }}</p>
       </div>
     </div>
   </div>

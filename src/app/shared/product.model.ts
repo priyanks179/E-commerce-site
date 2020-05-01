@@ -8,6 +8,8 @@ export class Product {
   pId?: any;
   cId?: any;
   wId?: any;
+  oid?: any;
+  localDate?: any;
   quantity: number;
 
   constructor(

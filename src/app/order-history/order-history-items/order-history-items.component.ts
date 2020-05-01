@@ -8,8 +8,13 @@ import { Product } from 'src/app/shared/product.model';
 })
 export class OrderHistoryItemsComponent implements OnInit {
   @Input() item: Product;
+  date: string;
+  orders: Product[];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.date = this.item[0];
+    this.orders = this.item[1];
+  }
 }
