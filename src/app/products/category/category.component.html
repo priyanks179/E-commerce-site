@@ -1,4 +1,4 @@
-<div class="list-group" id="categoriesList">
+<div class="list-group d-none d-md-flex" id="categoriesList">
   <h3 class="text-center">CATEGORIES</h3>
   <button
     class="list-group-item list-group-item-action"
@@ -54,4 +54,53 @@
   >
     Kids
   </button>
+</div>
+
+<div class="dropdown d-md-none w-100">
+  <button
+    class="btn btn-primary dropdown-toggle w-100"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    Select Category to Filter
+  </button>
+  <div class="dropdown-menu w-100 bg-dark">
+    <button class="dropdown-item text-white" (click)="getProducts()">
+      Get All Products
+    </button>
+    <button
+      class="dropdown-item text-white"
+      (click)="filterProducts('Electronics')"
+    >
+      Electronics
+    </button>
+    <button
+      class="dropdown-item text-white"
+      (click)="filterProducts('Home $ Furniture')"
+    >
+      Home & Furniture
+    </button>
+    <button class="dropdown-item text-white" (click)="filterProducts('Sports')">
+      Sports
+    </button>
+    <button class="dropdown-item text-white" (click)="filterProducts('Books')">
+      Books
+    </button>
+    <button
+      class="dropdown-item text-white"
+      (click)="filterProducts('Grocery')"
+    >
+      Grocery
+    </button>
+    <button class="dropdown-item text-white" (click)="filterProducts('Men')">
+      Men
+    </button>
+    <button class="dropdown-item text-white" (click)="filterProducts('Women')">
+      Women
+    </button>
+    <button class="dropdown-item text-white" (click)="filterProducts('Kids')">
+      Kids
+    </button>
+  </div>
 </div>
