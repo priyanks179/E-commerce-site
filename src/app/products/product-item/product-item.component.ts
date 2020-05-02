@@ -61,5 +61,6 @@ export class ProductItemComponent implements OnInit {
 
   onRemoveProduct() {
     this.dataStorageService.deleteProduct(this.product.id);
+    this.productService.deleteProduct(this.product.id);
   }
 }

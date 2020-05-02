@@ -25,8 +25,23 @@ export class ProductsService {
     return this.products[index];
   }
 
+  filterProducts(type: string, details: string) {
+    let filteredProduct;
+    if (type === 'title') {
+      filteredProduct = this.products.filter(
+        (product) =>
+          product.title.toLowerCase().indexOf(details.toLowerCase()) > -1
+      );
+    } else {
+      filteredProduct = this.products.filter((product) => {
+        return product[type] === details;
+      });
+    }
+    this.productsChanged.next(filteredProduct);
+  }
+
   deleteProduct(id: number) {
-    this.products = this.products.filter((product, index) => index !== id);
+    this.products = this.products.filter((product) => product.id !== id);
     this.productsChanged.next(this.products.slice());
   }
 }

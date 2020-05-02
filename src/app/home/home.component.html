@@ -30,11 +30,16 @@
                       placeholder="Realme X"
                       class="form-control rounded-right"
                       aria-describedby="search-icon"
+                      [(ngModel)]="searchBar"
                     />
                   </div>
                 </div>
                 <div class="col-md-4 mt-2 mt-sm-0 p-0 col-sm-4 col-lg-3">
-                  <button type="button" class="btn btn-light ml-sm-2 w-100">
+                  <button
+                    type="button"
+                    class="btn btn-light ml-sm-2 w-100"
+                    (click)="searchProducts()"
+                  >
                     Search Now
                   </button>
                 </div>

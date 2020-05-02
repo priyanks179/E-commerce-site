@@ -75,7 +75,10 @@
   </div>
 </nav>
 
-<div class="container-fluid fixed-bottom bg-light d-sm-none box-shadow p-0">
+<div
+  class="container-fluid fixed-bottom bg-light d-sm-none box-shadow p-0 m-0"
+  *ngIf="isLoggedIn"
+>
   <div class="btn-group w-100 h-100">
     <a
       routerLink="/history"

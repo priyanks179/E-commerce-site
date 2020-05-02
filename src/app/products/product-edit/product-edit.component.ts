@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+  ElementRef,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductsService } from '../products.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
@@ -12,6 +18,7 @@ import { Subscription } from 'rxjs';
 })
 export class ProductEditComponent implements OnInit, OnDestroy {
   @ViewChild('form') form: NgForm;
+  @ViewChild('closeBtn') closeBtn: ElementRef;
   product: Product;
   subscription: Subscription;
 
@@ -57,6 +64,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     } else {
       this.dataStorageService.editProduct(product, this.product.id);
     }
+    this.closeBtn.nativeElement.click();
   }
 
   ngOnDestroy() {

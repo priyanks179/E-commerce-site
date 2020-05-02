@@ -52,14 +52,7 @@ export class DataStorageService {
   }
 
   deleteProduct(id: number) {
-    this.http
-      .delete('products/' + id)
-      .pipe(
-        tap(() => {
-          this.productService.deleteProduct(id);
-        })
-      )
-      .subscribe();
+    this.http.delete(`products/${id}`).subscribe();
   }
 
   fetchCart() {

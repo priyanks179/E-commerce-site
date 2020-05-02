@@ -1,27 +1,57 @@
 <div class="list-group" id="categoriesList">
   <h3 class="text-center">CATEGORIES</h3>
-  <button class="list-group-item list-group-item-action">
-    Electronic
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="getProducts()"
+  >
+    Get All Products
   </button>
-  <button class="list-group-item list-group-item-action">
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Electronics')"
+  >
+    Electronics
+  </button>
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Home $ Furniture')"
+  >
     Home & Furniture
   </button>
-  <button class="list-group-item list-group-item-action">
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Sports')"
+  >
     Sports
   </button>
-  <button class="list-group-item list-group-item-action">
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Books')"
+  >
     Books
   </button>
-  <button class="list-group-item list-group-item-action">
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Grocery')"
+  >
     Grocery
   </button>
-  <button class="list-group-item list-group-item-action">
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Men')"
+  >
     Men
   </button>
-  <button class="list-group-item list-group-item-action">
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Women')"
+  >
     Women
   </button>
-  <button class="list-group-item list-group-item-action">
+  <button
+    class="list-group-item list-group-item-action"
+    (click)="filterProducts('Kids')"
+  >
     Kids
   </button>
 </div>
