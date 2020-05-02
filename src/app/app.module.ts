@@ -23,6 +23,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { WishlistItemComponent } from './wishlist/wishlist-item/wishlist-item.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderHistoryItemsComponent } from './order-history/order-history-items/order-history-items.component';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { OrderHistoryItemsComponent } from './order-history/order-history-items/
     WishlistItemComponent,
     OrderHistoryComponent,
     OrderHistoryItemsComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,

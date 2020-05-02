@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class ProductsService {
   private products: Product[] = [];
   productsChanged = new Subject<Product[]>();
+  productSend = new Subject<Product>();
 
   constructor() {}
 
@@ -22,5 +23,10 @@ export class ProductsService {
 
   getProduct(index: number) {
     return this.products[index];
+  }
+
+  deleteProduct(id: number) {
+    this.products = this.products.filter((product, index) => index !== id);
+    this.productsChanged.next(this.products.slice());
   }
 }

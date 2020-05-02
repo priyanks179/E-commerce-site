@@ -1,5 +1,5 @@
 export class Product {
-  id: number;
+  id?: number;
   title: String;
   descp: String;
   category: String;

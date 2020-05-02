@@ -78,6 +78,7 @@ export class AuthenticationComponent implements OnInit {
         this.isAuthenticating = false;
         this.dataStorageService.fetchCartCount();
         this.dataStorageService.fetchWishListCount();
+        this.authService.getUserRole();
         this.closeBtn.nativeElement.click();
         this.authService.loggedIn.next(true);
         this.router.navigate(['/']);

@@ -12,6 +12,7 @@ export class AuthService {
   Authorization: String;
   username: String;
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  userRole: BehaviorSubject<string> = new BehaviorSubject<string>('user');
   formCalled = new Subject<boolean>();
   tokenExpirationTimer;
 
@@ -30,6 +31,18 @@ export class AuthService {
           this.autoLogout(3600000);
         })
       );
+  }
+
+  getUserRole() {
+    this.http
+      .get(`users/${this.username}/role`, {
+        responseType: 'text',
+      })
+      .subscribe((resp) => {
+        if (resp === 'admin') {
+          this.userRole.next('admin');
+        }
+      });
   }
 
   logout() {
@@ -53,6 +66,7 @@ export class AuthService {
       this.loggedIn.next(true);
       const expDate = JSON.parse(localStorage.getItem('expires'));
       this.autoLogout(new Date(expDate).getTime() - new Date().getTime());
+      this.getUserRole();
     }
   }
 

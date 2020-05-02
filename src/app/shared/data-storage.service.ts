@@ -41,6 +41,27 @@ export class DataStorageService {
     );
   }
 
+  addProduct(product: Product) {
+    this.http.post('products', product).subscribe(() => {
+      this.fetchProducts();
+    });
+  }
+
+  editProduct(product: Product, id: number) {
+    this.http.put(`products/${id}`, product);
+  }
+
+  deleteProduct(id: number) {
+    this.http
+      .delete('products/' + id)
+      .pipe(
+        tap(() => {
+          this.productService.deleteProduct(id);
+        })
+      )
+      .subscribe();
+  }
+
   fetchCart() {
     return this.http
       .get<Product[]>(`users/${this.authService.getUsername()}/cart`)

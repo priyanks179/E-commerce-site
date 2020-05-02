@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AuthService } from '../authentication/auth.service';
-import { Observable, Subscription } from 'rxjs';
-import { Router, Route } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataStorageService } from '../shared/data-storage.service';
+import { ProductsService } from '../products/products.service';
 
 @Component({
   selector: 'app-header',
@@ -19,12 +19,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   username: String;
   cartUrl: String = null;
   scrollTopBtn: boolean = false;
+  userRole: string;
+
   constructor(
     private authService: AuthService,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private productService: ProductsService
   ) {}
 
   ngOnInit(): void {
+    this.authService.userRole.subscribe((role) => {
+      this.userRole = role;
+    });
     this.userSub = this.authService.loggedIn.subscribe((data) => {
       this.cartUrl = `users/${this.authService.getUsername()}/product`;
       this.isLoggedIn = data;
@@ -61,6 +67,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       top: 0,
       behavior: 'smooth',
     });
+  }
+
+  productFormReset() {
+    this.productService.productSend.next(null);
   }
 
   ngOnDestroy() {

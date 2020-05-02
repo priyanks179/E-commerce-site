@@ -3,6 +3,7 @@ import { Product } from 'src/app/shared/product.model';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/authentication/auth.service';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-product-item',
@@ -11,13 +12,19 @@ import { AuthService } from 'src/app/authentication/auth.service';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
+  userRole;
   constructor(
     private dataStorageService: DataStorageService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private productService: ProductsService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.userRole.subscribe((role) => {
+      this.userRole = role;
+    });
+  }
 
   onAddWishList() {
     if (this.authService.getUsername()) {
@@ -46,5 +53,13 @@ export class ProductItemComponent implements OnInit {
       const btn: HTMLElement = document.querySelector('#login-btn');
       btn.click();
     }
+  }
+
+  editProduct() {
+    this.productService.productSend.next(this.product);
+  }
+
+  onRemoveProduct() {
+    this.dataStorageService.deleteProduct(this.product.id);
   }
 }
