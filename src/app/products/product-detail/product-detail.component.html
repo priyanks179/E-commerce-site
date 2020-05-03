@@ -1,0 +1,31 @@
+<div class="container-fluid mt-4 py-1 mb-4">
+  <div class="row mt-4 pt-4" *ngIf="product">
+    <div class="col-md-4 mt-4">
+      <img [src]="product.imgUrl" class="img-fluid" />
+      <div class="btn-group h-100 w-100 mt-3" style="height: 3rem !important;">
+        <a
+          class="btn btn-danger rounded-0 d-flex align-items-center justify-content-center text-white"
+          (click)="onAddWishList()"
+        >
+          <i class="fas fa-heart"></i>
+        </a>
+        <a
+          class="btn btn-warning rounded-0 d-flex align-items-center justify-content-center"
+          (click)="onAddCart()"
+        >
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a
+          class="btn btn-primary rounded-0 d-flex align-items-center justify-content-center text-white"
+          (click)="onCheckOut()"
+        >
+          <i class="far fa-check-square"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-7 my-4">
+      <h1>{{ product.title }}</h1>
+      <p>{{ product.descp }}</p>
+    </div>
+  </div>
+</div>

@@ -41,6 +41,10 @@ export class DataStorageService {
     );
   }
 
+  fetchProduct(id: number) {
+    return this.http.get<Product>(`products/${id}`);
+  }
+
   addProduct(product: Product) {
     this.http.post('products', product).subscribe(() => {
       this.fetchProducts();

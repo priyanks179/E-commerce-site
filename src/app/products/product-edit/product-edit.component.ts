@@ -50,7 +50,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const value = this.form.value;
-    console.log(value);
     const product: Product = {
       title: value.title,
       price: value.price,

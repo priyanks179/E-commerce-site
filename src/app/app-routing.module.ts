@@ -6,6 +6,7 @@ import { ProductFormComponent } from './products/product-form/product-form.compo
 import { AuthGuard } from './authentication/auth.guard';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,19 +18,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'users/:username/product',
-    component: CartComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'products/new',
-    component: ProductFormComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'products/:id/edit',
-    component: ProductFormComponent,
-    canActivate: [AuthGuard],
+    path: 'product/:id',
+    component: ProductDetailComponent,
   },
 ];
 

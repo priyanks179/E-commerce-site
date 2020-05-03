@@ -59,6 +59,11 @@ export class ProductItemComponent implements OnInit {
     this.productService.productSend.next(this.product);
   }
 
+  showProductDetails() {
+    this.productService.productDetails.next(this.product);
+    this.router.navigate([`/product/${this.product.id}`]);
+  }
+
   onRemoveProduct() {
     this.dataStorageService.deleteProduct(this.product.id);
     this.productService.deleteProduct(this.product.id);

@@ -9,6 +9,7 @@ export class ProductsService {
   private products: Product[] = [];
   productsChanged = new Subject<Product[]>();
   productSend = new Subject<Product>();
+  productDetails = new Subject<Product>();
 
   constructor() {}
 
@@ -22,7 +23,10 @@ export class ProductsService {
   }
 
   getProduct(index: number) {
-    return this.products[index];
+    const products = this.products.filter((product) => product.id === index);
+    if (products.length > 0) {
+      return products[0];
+    }
   }
 
   filterProducts(type: string, details: string) {

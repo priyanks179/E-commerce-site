@@ -26,6 +26,9 @@
             Stock
             <span class="badge badge-light">{{ product.quantity }}</span>
           </button>
+          <button class="btn btn-info ml-2" (click)="showProductDetails()">
+            <i class="fab fa-readme"></i>
+          </button>
           <div class="dropdown p-0 ml-2" *ngIf="userRole === 'admin'">
             <button
               class="btn btn-secondary"
@@ -55,9 +58,6 @@
                 <i class="fas fa-edit"></i>
               </button>
             </div>
-            <button class="btn btn-info ml-2">
-              <i class="fab fa-readme"></i>
-            </button>
           </div>
         </div>
       </div>
