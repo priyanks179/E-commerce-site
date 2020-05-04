@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.userRole = role;
     });
     this.userSub = this.authService.loggedIn.subscribe((data) => {
-      this.cartUrl = `users/${this.authService.getUsername()}/product`;
       this.isLoggedIn = data;
     });
     if (this.isLoggedIn) {
@@ -81,5 +80,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogOut() {
     this.authService.logout();
+    this.dataStorageService.wishCount.next(null);
+    this.dataStorageService.cartCount.next(null);
   }
 }

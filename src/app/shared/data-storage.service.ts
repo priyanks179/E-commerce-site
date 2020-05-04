@@ -89,7 +89,9 @@ export class DataStorageService {
 
   addToCart(id: number) {
     return this.http
-      .post(`users/${this.authService.getUsername()}/cart/${id}`, null)
+      .post(`users/${this.authService.getUsername()}/cart/${id}`, null, {
+        responseType: 'text',
+      })
       .pipe(
         tap(() => {
           this.fetchCartCount();
@@ -107,7 +109,9 @@ export class DataStorageService {
 
   deleteFromCart(id: number) {
     return this.http
-      .delete(`users/${this.authService.getUsername()}/cart/${id}`)
+      .delete(`users/${this.authService.getUsername()}/cart/${id}`, {
+        responseType: 'text',
+      })
       .pipe(
         tap(() => {
           this.fetchCartCount();
@@ -157,7 +161,9 @@ export class DataStorageService {
 
   deleteFromWishList(id: number) {
     return this.http
-      .delete(`users/${this.authService.getUsername()}/wishlist/${id}`)
+      .delete(`users/${this.authService.getUsername()}/wishlist/${id}`, {
+        responseType: 'text',
+      })
       .pipe(
         tap(() => {
           this.fetchWishListCount();
@@ -179,5 +185,15 @@ export class DataStorageService {
           this.fetchCartCount();
         })
       );
+  }
+
+  fetchUserDetails() {
+    return this.http
+      .get(`users/${this.authService.getUsername()}/roleCartWishlist`)
+      .subscribe((data) => {
+        this.cartCount.next(data['cartCount']);
+        this.wishCount.next(data['wishlistCount']);
+        this.authService.userRole.next(data['role']);
+      });
   }
 }

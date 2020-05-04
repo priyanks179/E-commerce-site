@@ -76,9 +76,7 @@ export class AuthenticationComponent implements OnInit {
         this.authService.setUsername(postData.username);
         localStorage.setItem('username', postData.username);
         this.isAuthenticating = false;
-        this.dataStorageService.fetchCartCount();
-        this.dataStorageService.fetchWishListCount();
-        this.authService.getUserRole();
+        this.dataStorageService.fetchUserDetails();
         this.closeBtn.nativeElement.click();
         this.authService.loggedIn.next(true);
         this.router.navigate(['/']);

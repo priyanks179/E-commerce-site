@@ -19,8 +19,7 @@ export class AppComponent implements OnInit {
     this.authService.autoLogin();
     this.authService.loggedIn.subscribe((isAuhthenticated) => {
       if (isAuhthenticated) {
-        this.dataStorageService.fetchCartCount();
-        this.dataStorageService.fetchWishListCount();
+        this.dataStorageService.fetchUserDetails();
       }
     });
   }

@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { DataStorageService } from '../shared/data-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -56,6 +55,7 @@ export class AuthService {
     localStorage.removeItem('username');
     localStorage.removeItem('token');
     localStorage.removeItem('expires');
+    this.userRole.next(null);
     this.router.navigate(['/']);
   }
 
